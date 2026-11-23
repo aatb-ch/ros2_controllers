@@ -1,0 +1,15 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 500
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+    jtc:
+      type: joint_trajectory_controller/JointTrajectoryController
+jtc:
+  ros__parameters:
+    joints: [j1, j2, j3]
+    command_interfaces: [position]
+    state_interfaces: [position, velocity]
+    interpolate_from_desired_state: true
+    allow_nonzero_velocity_at_trajectory_end: false
+    constraints: {goal_time: 0.0, stopped_velocity_tolerance: 1.0}

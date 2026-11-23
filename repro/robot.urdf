@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<robot name="rrr">
+  <link name="world"/>
+  <link name="l1"/><link name="l2"/><link name="l3"/>
+  <joint name="j1" type="revolute"><parent link="world"/><child link="l1"/><axis xyz="0 0 1"/><limit lower="-100" upper="100" effort="1" velocity="10"/></joint>
+  <joint name="j2" type="revolute"><parent link="l1"/><child link="l2"/><axis xyz="0 0 1"/><limit lower="-100" upper="100" effort="1" velocity="10"/></joint>
+  <joint name="j3" type="revolute"><parent link="l2"/><child link="l3"/><axis xyz="0 0 1"/><limit lower="-100" upper="100" effort="1" velocity="10"/></joint>
+  <ros2_control name="mock" type="system">
+    <hardware><plugin>mock_components/GenericSystem</plugin></hardware>
+    <joint name="j1"><command_interface name="position"/><state_interface name="position"><param name="initial_value">0.0</param></state_interface><state_interface name="velocity"/></joint>
+    <joint name="j2"><command_interface name="position"/><state_interface name="position"><param name="initial_value">0.0</param></state_interface><state_interface name="velocity"/></joint>
+    <joint name="j3"><command_interface name="position"/><state_interface name="position"><param name="initial_value">0.0</param></state_interface><state_interface name="velocity"/></joint>
+  </ros2_control>
+</robot>
